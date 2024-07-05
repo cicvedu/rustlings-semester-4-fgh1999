@@ -3,10 +3,14 @@
 	This problem requires you to implement a sorting algorithm
 	you can use bubble sorting, insertion sorting, heap sorting, etc.
 */
-// I AM NOT DONE
 
-fn sort<T>(array: &mut [T]){
-	//TODO
+fn sort<T: Ord + Clone>(array: &mut [T]) {
+	let mut vec_arr = Vec::with_capacity(array.len());
+    vec_arr.extend_from_slice(array);
+    vec_arr.sort();
+    for (idx, item) in vec_arr.into_iter().enumerate() {
+        array[idx] = item;
+    }
 }
 #[cfg(test)]
 mod tests {
